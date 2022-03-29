@@ -49,4 +49,84 @@ $(document).ready(function(){
         $(this).siblings(".more").show();
         $(this).closest(".title").find("p").slideUp();
     });
+
+    /* 
+    $("#ex_07 .q_box p").hide();
+    $("#ex_07 .q_box h5").click(function(){
+        var $active=$(this).hasClass("active");
+        if($active==false){
+            $("#ex_07 .q_box h5").removeClass("active");
+            $(this).addClass("active");
+            $("#ex_07 .q_box p").slideUp();
+            $(this).siblings("p").slideDown();
+        }else{
+            $(this).removeClass("active");
+            $(this).siblings("p").slideUp();
+        }
+    });
+     */
+
+    $("#ex_07 .q_box p").hide();
+    $("#ex_07 .q_box h5").click(function(){
+        var $active=$(this).closest(".q_box").hasClass("active");
+        if($active==false){
+            $("#ex_07 .q_box").removeClass("active");
+            $(this).closest("#ex_07 .q_box").addClass("active");
+            $("#ex_07 .q_box p").slideUp();
+            $(this).next().slideDown();
+        }else{
+            // $(this).closest("#ex_07 .q_box").removeClass("active");
+            $("#ex_07 .q_box").removeClass("active");
+            $("#ex_07 .q_box p").slideUp();
+        }
+    });
+
+    $("#ex_08 .per_bar_frame").each(function(){
+        var $cur_per=$(this).attr("data-percent");
+        console.log($cur_per);
+        $(this).find(".per_bar").animate({"width":$cur_per},500);
+        $(this).find(".cur_per").text($cur_per);
+    });
+
+    $("#ex_09 .dark-bg, #ex_09 .login-box").hide();
+    $("#ex_09 .login_btn .op_btn").click(function(){
+        $("#ex_09 .dark-bg, #ex_09 .login-box").show();
+        $("#ex_09 .dark-bg").addClass("active_bg");
+    });
+    $("#ex_09 .dark-bg, #ex_09 .login-box .cls_btn").click(function(){
+        $("#ex_09 .dark-bg, #ex_09 .login-box").hide();
+        $("#ex_09 .dark-bg").removeClass("active_bg");
+    });
+
+    $("#ex_10 .dark-bg, #ex_10 .login-box, #ex_10 .register-box").hide();
+    $("#ex_10 .login_btn .op_btn").click(function(){
+        $("#ex_10 .dark-bg, #ex_10 .login-box").show();
+        $("#ex_10 .dark-bg").addClass("active_bg");
+    });
+    $("#ex_10 .login_btn .rg_btn").click(function(){
+        $("#ex_10 .dark-bg, #ex_10 .register-box").show();
+        $("#ex_10 .dark-bg").addClass("active_bg");
+    });
+    $("#ex_10 .dark-bg, #ex_10 .cls_btn").click(function(){
+        $("#ex_10 .dark-bg, #ex_10 .login-box, #ex_10 .register-box").hide();
+        $("#ex_10 .dark-bg").removeClass("active_bg");
+    });
+
+    $("#ex_10 .login-box h6").click(function(){
+        $("#ex_10 .login-box").hide();
+        $("#ex_10 .register-box").show();
+    });
+    $("#ex_10 .register-box h6").click(function(){
+        $("#ex_10 .register-box").hide();
+        $("#ex_10 .login-box").show();
+    });
+
+    $("#ex_11 .cont-box .cont-bg, #ex_11 .cont-box .cont-img, #ex_11 .cont-box .cont-text").hide();
+    $("#ex_11 .img_op .img_op_btn").click(function(){
+        $("#ex_11 .cont-box .cont-bg").slideDown(500,function(){
+            $("#ex_11 .cont-box .cont-img").slideDown(500,function(){
+                $("#ex_11 .cont-box .cont-text").slideDown(500);
+            });
+        });
+    });
 });
